@@ -1,0 +1,147 @@
+<odoo>
+    <!-- Vista formulario -->
+    <record id="view_customer_contract_form" model="ir.ui.view">
+        <field name="name">customer.contract.form</field>
+        <field name="model">customer.contract</field>
+        <field name="arch" type="xml">
+            <form string="Contrato con Cliente">
+                <header>
+                    <field name="state"
+                        widget="statusbar"
+                    />
+                    <button name="set_in_progress" type="object" string="Iniciar"
+                        decoration-bool="state == 'draft'" class="btn-success" />
+                    <button name="set_completed" type="object" string="Completar"
+                        decoration-bool="state == 'in_progress'" class="btn-danger" />
+
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="partner_id" />
+                        <field name="description" />
+                        <field name="start_date" />
+                        <field name="end_date" />
+                        <field name="total_hours" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista lista -->
+    <record id="view_customer_contract_tree" model="ir.ui.view">
+        <field name="name">customer.contract.tree</field>
+        <field name="model">customer.contract</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="partner_id" />
+                <field name="description" />
+                <field name="start_date" />
+                <field name="end_date" />
+                <field name="total_hours" />
+
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista Kanban -->
+    <record id="view_customer_contract_kanban" model="ir.ui.view">
+        <field name="name">customer.contract.kanban</field>
+        <field name="model">customer.contract</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_example">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-att-class="'oe_kanban_global_click'">
+                            <div class="o_kanban_record_top">
+                                <div class="o_kanban_primary d-grid">
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                    <strong>
+                                    <field name="partner_id" />
+                                    </strong>
+                                        
+                                </div>
+
+                            </div>
+                            <div
+                                t-att-class="
+                            'o_kanban_secondary ' +
+                            (record.state.raw_value === 'draft' ? 'text-black' :
+                            record.state.raw_value === 'in_progress' ? 'text-success' :
+                            record.state.raw_value === 'completed' ? 'text-danger' : '')">
+                                <strong>
+                                    <field name="state" />
+                                </strong>
+                            </div>
+                            <div class="o_kanban_details">
+                                <p>
+                                    <strong>Descripción:</strong>
+                                    <field name="description" />
+                                </p>
+
+                                <div class="d-flex">
+                                    <p>
+                                        <strong>Inicio:</strong>
+                                        <field name="start_date" />
+                                    </p>
+                                    <p class="ms-3">
+                                        <strong>Fin:</strong>
+                                        <field name="end_date" />
+                                    </p>
+                                </div>
+
+
+                                <p>
+                                    <strong>Horas Totales:</strong>
+                                    <field name="total_hours" />
+                                </p>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_contract_completion_wizard_form" model="ir.ui.view">
+        <field name="name">contract.completion.wizard.form</field>
+        <field name="model">contract.completion.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Motivo de Finalización">
+                <group>
+                    <field name="completion_reason"
+                        placeholder="Escribe el motivo de finalización..." />
+                </group>
+                <footer>
+                    <button string="Confirmar" type="object" name="confirm_reason"
+                        class="btn-primary" />
+                    <button string="Cancelar" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Acción para las vistas -->
+    <record id="action_customer_contract" model="ir.actions.act_window">
+        <field name="name">Contratos con Clientes</field>
+        <field name="res_model">customer.contract</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="view_customer_contract_tree" />
+    </record>
+
+    <!-- Menú raíz -->
+    <menuitem id="menu_customer_contract_root"
+        name="Contratos con Clientes"
+        sequence="10" />
+
+    <!-- Submenú con acción -->
+    <menuitem id="menu_customer_contract"
+        name="Contratos"
+        parent="menu_customer_contract_root"
+        action="action_customer_contract" />
+</odoo>

@@ -1,0 +1,57 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Definir los grupos -->
+        <record id="group_customer_contract_user" model="res.groups">
+            <field name="name">Usuario de Contratos con Clientes</field>
+        </record>
+
+        <record id="group_customer_contract_manager" model="res.groups">
+            <field name="name">Administrador de Contratos con Clientes</field>
+        </record>
+
+        <!-- Asignar permisos al grupo de Usuario -->
+        <record id="access_customer_contract_user" model="ir.model.access">
+            <field name="name">access.customer.contract.user</field>
+            <field name="model_id" ref="model_customer_contract" />
+            <field name="group_id" ref="group_customer_contract_user" />
+            <field name="perm_read">1</field>
+            <field name="perm_write">0</field>
+            <field name="perm_create">0</field>
+            <field name="perm_unlink">0</field>
+        </record>
+
+        <!-- Asignar permisos al grupo de Administrador -->
+        <record id="access_customer_contract_manager" model="ir.model.access">
+            <field name="name">access.customer.contract.manager</field>
+            <field name="model_id" ref="model_customer_contract" />
+            <field name="group_id" ref="group_customer_contract_manager" />
+            <field name="perm_read">1</field>
+            <field name="perm_write">1</field>
+            <field name="perm_create">1</field>
+            <field name="perm_unlink">1</field>
+        </record>
+
+        <!-- Asignar permisos para el modelo contract.completion.wizard -->
+        <record id="access_contract_completion_wizard_user" model="ir.model.access">
+            <field name="name">access.contract.completion.wizard.user</field>
+            <field name="model_id" ref="model_contract_completion_wizard" />
+            <field name="group_id" ref="group_customer_contract_user" />
+            <field name="perm_read">1</field>
+            <field name="perm_write">1</field>
+            <field name="perm_create">1</field>
+            <field name="perm_unlink">0</field>
+        </record>
+
+        <record id="access_contract_completion_wizard_manager" model="ir.model.access">
+            <field name="name">access.contract.completion.wizard.manager</field>
+            <field name="model_id" ref="model_contract_completion_wizard" />
+            <field name="group_id" ref="group_customer_contract_manager" />
+            <field name="perm_read">1</field>
+            <field name="perm_write">1</field>
+            <field name="perm_create">1</field>
+            <field name="perm_unlink">1</field>
+        </record>
+
+
+    </data>
+</odoo>

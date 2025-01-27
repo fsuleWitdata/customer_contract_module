@@ -1,0 +1,14 @@
+<odoo>
+    <record id="action_customer_contract" model="ir.actions.act_window">
+        <field name="name">Contratos con Clientes</field>
+        <field name="res_model">customer.contract</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    <menuitem id="menu_customer_contract_root" name="Contratos con Clientes"
+        web_icon="customer_contract_module,static/description/icon.png"
+        sequence="10" />
+
+    <menuitem id="menu_customer_contract" name="Contratos" parent="menu_customer_contract_root"
+        action="action_customer_contract" />
+</odoo>

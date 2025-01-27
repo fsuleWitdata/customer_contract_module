@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_customer_contract_user,access.customer.contract.user,model_customer_contract,base.group_user,1,0,0,0
+access_contract.completion.wizard_user,contract.completion.wizard.user,model_contract_completion_wizard,base.group_user,1,0,0,0
+access_customer_contract_manager,access.contract.completion.wizard.manager,model_customer_contract,base.group_system,1,1,1,1
+access_contract.completion.wizard_manager,access.customer.contract.manager,model_contract_completion_wizard,base.group_system,1,1,1,1
