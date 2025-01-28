@@ -9,6 +9,7 @@ class CustomerContract(models.Model):
     partner_id = fields.Many2one('res.partner', string='Cliente', required=True)
     description = fields.Text(string='Descripción', required=True)
     start_date = fields.Date(string='Fecha de Inicio', required=True)
+    payment = fields.Char(string='Condiciones comerciales', required=True)
     end_date = fields.Date(string='Fecha de Fin', required=True)
     total_hours = fields.Float(string='Horas Totales', required=True)
     completion_reason = fields.Text(string='Motivo de Finalización', help='Razón por la cual se completó antes de la fecha.')
