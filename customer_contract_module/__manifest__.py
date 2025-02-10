@@ -9,7 +9,7 @@
         App Module to save contracts with clients, hours, date range, status.
     """,
     'depends': ['base', 'contacts'],
-    "license" : "	AGPL-3",
+    'license': 'LGPL-3',
     'data': [
         'views/customer_contract_view.xml',
         'views/customer_contract_menu.xml',
