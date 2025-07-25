@@ -10,5 +10,6 @@
         sequence="10" />
 
     <menuitem id="menu_customer_contract" name="Contratos" parent="menu_customer_contract_root"
-        action="action_customer_contract" />
+        action="action_customer_contract"
+        groups="group_customer_contract_user,group_customer_contract_manager" />
 </odoo>

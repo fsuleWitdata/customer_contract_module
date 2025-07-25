@@ -13,7 +13,6 @@
     'data': [
         'views/customer_contract_view.xml',
         'views/customer_contract_menu.xml',
-        'views/res_partner.xml',
         'security/ir.model.access.csv',
         'security/security.xml',
     ],
